@@ -45,7 +45,7 @@ export default function Signup() {
                   </div>
   
                   {/* <!-- Submit button --> */}
-                  <button type="submit" className="btn btn-primary btn-lg btn-block">Sign Up</button>
+                  <button type="submit" className="btn btn-primary btn-lg btn-block">Register</button>
   
                   <div className="divider d-flex align-items-center my-4">
                    <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
