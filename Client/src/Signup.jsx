@@ -1,8 +1,24 @@
 
 // import { Link } from "react"
+import { Link } from "react-router-dom"
+import { useState } from "react"
 import "./App.css"
+import axios from 'axios'
+import { useNavigate} from 'react-router-dom'
 
 export default function Signup() {
+  const [name, setName] = useState()
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+  const navigate = useNavigate()
+  const handlesubmit=(e)=>{
+    e.preventDefault()
+    axios.post('http://localhost:9000/register', {name,email,password})
+    .then(result=>console.log(result))
+    navigate('/signin')
+
+  }
+
     return (
       <div>
         <section className="vh-100">
@@ -14,52 +30,54 @@ export default function Signup() {
               </div>
               <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                   <h2 className="text-primary mb-3">Sign Up</h2>
-                <form>
+                <form onSubmit={handlesubmit}>
                      {/* <!-- Name input --> */}
                   <div className="form-outline mb-4">
                   <label className="form-label" >Name</label>
-                   <input type="text" id="form1Example13" className="form-control form-control-lg" />
+                   <input type="text" id="form1Example13" className="form-control form-control-lg" placeholder="Enter Your Name" 
+                   onChange={(e)=>setName(e.target.value)} />
                    
                   </div>
                   {/* <!-- Email input --> */}
                   <div className="form-outline mb-4">
                   <label className="form-label" >Email address</label>
-                   <input type="email" id="form1Example13" className="form-control form-control-lg" />
+                   <input type="email" id="form1Example13" className="form-control form-control-lg"
+                   placeholder="Enter Your Email"
+                   onChange={(e)=>setEmail(e.target.value)}
+                   />
                    
                   </div>
   
                   {/* <!-- Password input --> */}
                   <div className="form-outline mb-4">
                   <label className="form-label" >Password</label>
-                   <input type="password" id="form1Example23" className="form-control form-control-lg" />
+                   <input type="password" id="form1Example23" className="form-control form-control-lg"
+                   placeholder="Enter Your Password"
+                   onChange={(e)=>setPassword(e.target.value)}
+                   />
                    
                   </div>
   
                   <div className="d-flex justify-content-around align-items-center mb-4">
                    {/* <!-- Checkbox --> */}
-                   <div className="form-check">
+                   {/* <div className="form-check">
                       <input className="form-check-input" type="checkbox" value="" id="form1Example3"  />
                       <label className="form-check-label" > Remember me </label>
-                   </div>
+                   </div> */}
                    {/* <Link to="#">Forgot password?</Link> */}
                   </div>
   
                   {/* <!-- Submit button --> */}
-                  <button type="submit" className="btn btn-primary btn-lg btn-block">Register</button>
-  
-                  <div className="divider d-flex align-items-center my-4">
-                   <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                  <button type="submit" className="btn btn-primary w-100 btn-lg ">SignUp</button>
+                  </form>
+                   <p className="text-black-100 my-2">Already Have an Account</p>
+                  <div className="my-4">
+                  <Link to="/signin" className="btn btn-default btn-lg w-100 border border-black ">Log In</Link>
                   </div>
   
-                  <a className="btn btn-primary btn-lg btn-block" style={{backgroundColor: '#3b5998'}} href="#!"
-                   role="button">
-                   <i className="fab fa-facebook-f me-2"></i>Continue with Facebook
-                  </a>
-                  <a className="btn btn-primary btn-lg btn-block" style={{backgroundColor: '#55acee'}} href="#!"
-                   role="button">
-                   <i className="fab fa-twitter me-2"></i>Continue with Twitter</a>
+                 
   
-                </form>
+                
               </div>
             </div>
           </div>
