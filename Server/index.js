@@ -16,15 +16,14 @@ app.post("/login", (req, res) => {
   const { email, password } = req.body;
   EmployeeModel.findOne({ email: email }).then((user) => {
     if (user) {
-      bcrypt.compare(password, user.password, (err,response)=>{
-        if(err){
-          res.json("the password is incorect")
+      bcrypt.compare(password, user.password, (err, response) => {
+        if (response) {
+          res.json("Success");
+        } else {
+          res.json("Invalid Password");
         }
-        if (response){
-          res.json("Success")
-        }
-      })
-   } else {
+      });
+    } else {
       res.json("No record Found!");
     }
   });
