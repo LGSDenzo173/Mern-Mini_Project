@@ -11,6 +11,7 @@ export default function Signup() {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const navigate = useNavigate()
+  
   const handlesubmit=(e)=>{
     e.preventDefault()
     axios.post('http://localhost:9000/register', {name,email,password})
