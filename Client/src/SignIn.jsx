@@ -10,7 +10,7 @@ export default function SignIn() {
   const navigate = useNavigate();
   const handlesubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:9000/login", { email, password })
+    axios.post("http://localhost:9000/api/login", { email, password })
       .then((result) => {
         console.log(result);
         if (result.data === "Success") {

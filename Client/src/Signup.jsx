@@ -14,7 +14,7 @@ export default function Signup() {
   
   const handlesubmit=(e)=>{
     e.preventDefault()
-    axios.post('http://localhost:9000/register', {name,email,password})
+    axios.post('http://localhost:9000/api/register', {name,email,password})
     .then(result=>console.log(result))
     navigate('/signin')
 
